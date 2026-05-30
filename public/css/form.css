@@ -167,6 +167,23 @@ button:active {
     transform: translateY(0);
 }
 
+.form-status {
+    min-height: 1.25rem;
+    margin: 0.9rem 0 0;
+    font-weight: 700;
+    white-space: pre-wrap;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.95rem;
+}
+
+.form-status--success {
+    color: #c8f7d0;
+}
+
+.form-status--error {
+    color: #ffb3ba;
+}
+
 @keyframes riseIn {
     from {
         opacity: 0;

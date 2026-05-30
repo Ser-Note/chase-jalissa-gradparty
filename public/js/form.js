@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
 	const form = document.getElementById("grad-form");
 	const phoneInput = document.getElementById("phone");
+	const formStatus = document.getElementById("form-status");
 
-	if (!form || !phoneInput) {
+	if (!form || !phoneInput || !formStatus) {
 		return;
 	}
 
@@ -197,16 +198,47 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 
 	form.addEventListener("submit", (event) => {
+		event.preventDefault();
+		formStatus.textContent = "";
+		formStatus.className = "";
+
 		const digits = digitsOnly(phoneInput.value);
 		syncValidity(digits);
 
 		if (!phoneInput.checkValidity()) {
-			event.preventDefault();
 			phoneInput.reportValidity();
 			return;
 		}
 
 		// Submit digits only to the server after validation passes.
 		phoneInput.value = digits;
+
+		fetch(form.action, {
+			method: form.method,
+			headers: {
+				"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+			},
+			body: new URLSearchParams(new FormData(form))
+		})
+			.then(async (response) => {
+				const data = await response.json();
+
+				if (!response.ok) {
+					throw new Error(data.message || "Submission failed.");
+				}
+
+				window.alert(data.message || "Submission successful!");
+				form.reset();
+				phoneInput.value = "";
+				formStatus.textContent = "";
+				formStatus.className = "";
+
+				window.location.reload();
+			})
+			.catch((error) => {
+				window.alert(error.message);
+				formStatus.textContent = error.message;
+				formStatus.className = "form-status form-status--error";
+			});
 	});
 });
