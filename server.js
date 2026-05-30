@@ -4,6 +4,8 @@ const path = require('path');
 
 const formRouter = require('./routes/form');
 
+app.set('trust proxy', 1);
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
