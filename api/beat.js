@@ -1,4 +1,4 @@
-const {heartbeat} = require('../database/db');
+const { heartbeat } = require('../config/db');
 
 module.exports = async function handler(req, res) {
     try {
