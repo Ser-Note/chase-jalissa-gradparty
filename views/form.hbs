@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/form.css">
+</head>
+<body>
+    <form id="grad-form" action="/" method="POST">
+        <h1>Join us to celebrate the graduation of Chase Rogers and Jalissa Walton!</h1>
+        <p>Please fill out the form below to RSVP for the event.</p>
+        <p class="event-meta">Date: June 20, 2026</p>
+        <p class="event-meta">Time: 1:00 PM</p>
+        <p class="event-meta">Location: 29 Hearthstone Dr, Reading, PA 19606</p>
+        <div class="photo-row">
+            <img id="chase-pic" src="/photos/chase-pic.jpg" alt="Picture of Chase Rogers">
+            <img id="jalissa-pic" src="/photos/jalissa-pic.jpg" alt="Picture of Jalissa Walton">
+        </div>
+
+        <label for="attendance">Likelihood of Coming:</label>
+        <select id="attendance" name="attendance" required>
+            <option value="">Select an option</option>
+            <option value="definitely">Definitely</option>
+            <option value="maybe">Maybe</option>
+            <option value="probably-not">Probably Not</option>
+        </select>
+
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="fname" required>
+
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lname" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" inputmode="numeric" maxlength="14" placeholder="(___) ___ ____" autocomplete="tel-national" required>
+
+        <button type="submit">Submit</button>
+    </form>
+    <script src="/js/form.js"></script>
+</body>
+</html>

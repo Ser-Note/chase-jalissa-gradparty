@@ -1,0 +1,191 @@
+:root {
+    --ink: #eef4ff;
+    --ink-soft: #cfd8f0;
+    --surface: #090d14;
+    --blue: #2c6ef2;
+    --white: #f9fbff;
+    --red: #d11b2c;
+    --line: #3a4f7a;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Work Sans", "Segoe UI", sans-serif;
+    color: var(--ink);
+    background: #000;
+    display: grid;
+    place-items: center;
+    padding: 2rem 1rem;
+}
+
+#grad-form {
+    position: relative;
+    overflow: hidden;
+    width: min(720px, 100%);
+    background: var(--surface);
+    border: 2px solid var(--line);
+    border-radius: 24px;
+    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.45);
+    padding: clamp(1.25rem, 3vw, 2.25rem);
+    animation: riseIn 500ms ease-out both;
+}
+
+#grad-form::before,
+#grad-form::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    pointer-events: none;
+}
+
+#grad-form::before {
+    left: 0;
+    background:
+        radial-gradient(circle at 18% 20%, rgba(249, 251, 255, 0.2), transparent 40%),
+        linear-gradient(120deg, rgba(44, 110, 242, 0.33), rgba(249, 251, 255, 0.08));
+}
+
+#grad-form::after {
+    right: 0;
+    background:
+        radial-gradient(circle at 82% 26%, rgba(209, 27, 44, 0.28), transparent 38%),
+        linear-gradient(240deg, rgba(0, 0, 0, 0.68), rgba(209, 27, 44, 0.2));
+}
+
+#grad-form > * {
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    margin: 0 0 0.75rem;
+    font-family: "Bebas Neue", "Impact", sans-serif;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    line-height: 1.05;
+    letter-spacing: 0.03em;
+    color: var(--white);
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+}
+
+p {
+    margin: 0.35rem 0;
+    color: var(--ink-soft);
+}
+
+.event-meta {
+    font-weight: 600;
+    color: #e6edff;
+}
+
+.photo-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.2rem 0 1.6rem;
+    flex-wrap: wrap;
+}
+
+#chase-pic,
+#jalissa-pic {
+    width: clamp(132px, 24vw, 180px);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #ffffff;
+}
+
+#chase-pic {
+    border-color: var(--blue);
+    box-shadow:
+        0 0 0 4px rgba(249, 251, 255, 0.95),
+        0 10px 24px rgba(44, 110, 242, 0.38);
+}
+
+#jalissa-pic {
+    border-color: var(--red);
+    box-shadow:
+        0 0 0 4px rgba(22, 22, 24, 0.95),
+        0 10px 24px rgba(209, 27, 44, 0.4);
+}
+
+label {
+    display: block;
+    font-weight: 700;
+    margin: 0.8rem 0 0.35rem;
+    color: #f4f7ff;
+}
+
+input,
+select,
+button {
+    width: 100%;
+    border-radius: 12px;
+    font: inherit;
+}
+
+input,
+select {
+    padding: 0.75rem 0.85rem;
+    border: 2px solid #7f93bf;
+    background: rgba(248, 252, 255, 0.96);
+    color: #1a2742;
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(44, 110, 242, 0.3);
+}
+
+button {
+    margin-top: 1.1rem;
+    border: 0;
+    padding: 0.9rem 1.05rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(90deg, #2c6ef2 0%, #f5f8ff 40%, #b20f1f 100%);
+    color: #070b12;
+    cursor: pointer;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+@keyframes riseIn {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 540px) {
+    #grad-form {
+        border-radius: 18px;
+        padding: 1.1rem;
+    }
+
+    h1 {
+        font-size: clamp(1.8rem, 10vw, 2.3rem);
+    }
+}
